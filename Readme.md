@@ -10,3 +10,5 @@ All source code is open source and released under the
 Examples created by Al Sweigart.
 
 All modifications made by A.C. LoGreco.
+
+(Uses Python 3.2)
