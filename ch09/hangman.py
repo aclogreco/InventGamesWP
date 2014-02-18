@@ -58,6 +58,22 @@ HANGMANPICS = ['''
  /|\  |
  / \  |
       |
+=========''', '''
+
+  +---+
+  |   |
+ [O   |
+ /|\  |
+ / \  |
+      |
+=========''', '''
+
+  +---+
+  |   |
+ [O]  |
+ /|\  |
+ / \  |
+      |
 =========''']
 
 words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar coyote'
@@ -65,7 +81,11 @@ words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar coyote'
       +  'lizard llama mole monkey moose mouse mule newt otter owl panda parrot '
       +  'pigeon python rabbit ram rat raven rhino salmon seal shark sheep '
       +  'skunk sloth snake spider stork swan tiger toad trout turkey turtle '
-      +  'weasel whale wolf wombat zebra').split()
+      +  'weasel whale wolf wombat zebra red orange yellow green blue indigo '
+      +  'violet white black brown square triangle rectangle circle ellipse '
+      +  'rhombus trapazoid chevron pentagon hexagon septagon octogon apple '
+      +  'orange lemon lime pear watermelon grape grapefruit cherry banana '
+      +  'cantalope mango strawberry tomato').split()
 
 def getRandomWord (wordList):
     """
