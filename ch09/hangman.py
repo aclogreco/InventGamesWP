@@ -76,28 +76,41 @@ HANGMANPICS = ['''
       |
 =========''']
 
-words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar coyote'
-      +  'crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion'
-      +  'lizard llama mole monkey moose mouse mule newt otter owl panda parrot '
-      +  'pigeon python rabbit ram rat raven rhino salmon seal shark sheep '
-      +  'skunk sloth snake spider stork swan tiger toad trout turkey turtle '
-      +  'weasel whale wolf wombat zebra red orange yellow green blue indigo '
-      +  'violet white black brown square triangle rectangle circle ellipse '
-      +  'rhombus trapazoid chevron pentagon hexagon septagon octogon apple '
-      +  'orange lemon lime pear watermelon grape grapefruit cherry banana '
-      +  'cantalope mango strawberry tomato').split()
+words = {'Animals':('ant baboon badger bat bear beaver camel cat clam cobra '
+         +'cougar coyote crow deer dog donkey duck eagle ferret fox frog goat '
+         +'goose hawk lion lizard llama mole monkey moose mouse mule newt '
+         +'otter owl panda parrot pigeon python rabbit ram rat raven rhino '
+         +'salmon seal shark sheep skunk sloth snake spider stork swan tiger '
+         +'toad trout turkey turtle weasel whale wolf wombat zebra').split(),
+         'Colors':('red orange yellow green blue indigo violet white black '
+         +'brown').split(),
+         'Shapes':('square triangle rectangle circle ellipse rhombus trapazoid '
+         +'chevron pentagon hexagon septagon octogon').split(),
+         'Fruits':('apple orange lemon lime pear watermelon grape grapefruit '
+         +'cherry banana cantalope mango strawberry tomato').split()}
 
-def getRandomWord (wordList):
-    """
-    Returns a random string from the passed list of strings.
-    """
-    wordIndex = random.randint(0, len(wordList) - 1)
-    return wordList[wordIndex]
 
-def displayBoard (HANGMANPICS, missedLetters, correctLetters, secretWord):
+def getRandomWord (wordDict):
+    """
+    Returns a random string from the passed dictionary of lists of strings, and 
+    the key also.
+    """
+    # Randomly select a key from the dictionary
+    wordKey = random.choice(list(wordDict.keys()))
+
+    # Randomly select a word from the key's list in the dictionary
+    wordIndex = random.randint(0, len(wordDict[wordKey]) - 1)
+    
+    return [wordDict[wordKey][wordIndex], wordKey]
+
+
+def displayBoard (HANGMANPICS, missedLetters, correctLetters, secretWord, secretKey):
     """
     Prints the game board to the console.
     """
+    # Print which set the secret word comes from.
+    print('The secret word is in the set: ' + secretKey)
+    
     # Print the current hangman pic.
     print(HANGMANPICS[len(missedLetters)])
     print()
@@ -120,6 +133,7 @@ def displayBoard (HANGMANPICS, missedLetters, correctLetters, secretWord):
         print(letter, end=' ')
     print()
 
+
 def getGuess (alreadyGuessed):
     """
     Returns the letter the player entered. This function makes sure the player
@@ -138,6 +152,7 @@ def getGuess (alreadyGuessed):
         else:
             return guess
 
+
 def playAgain ():
     """
     Returns TRUE if the player wants to play again,
@@ -146,15 +161,16 @@ def playAgain ():
     print('Do you want to play again? (yes or no)')
     return input().lower().startswith('y')
 
+
 print('H A N G M A N')
 missedLetters = ''
 correctLetters = ''
-secretWord = getRandomWord(words)
+secretWord, secretKey = getRandomWord(words)
 gameIsDone = False
 
 # Main game loop
 while True:
-    displayBoard(HANGMANPICS, missedLetters, correctLetters, secretWord)
+    displayBoard(HANGMANPICS, missedLetters, correctLetters, secretWord, secretKey)
 
     # Let the player type in a letter.
     guess = getGuess(missedLetters + correctLetters)
@@ -189,6 +205,6 @@ while True:
             missedLetters = ''
             correctLetters = ''
             gameIsDone = False
-            secretWord = getRandomWord(words)
+            secretWord, secretKey = getRandomWord(words)
         else:
             break
