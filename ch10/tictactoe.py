@@ -47,3 +47,10 @@ def whoGoesFirst():
     else:
         return 'player'
 
+def playAgain():
+    """
+    This function returns True if the player wants to play again, otherwise
+    it returns False.
+    """
+    print('Do you want to play again? (yes or no)')
+    return input().lower().startswith('y')
