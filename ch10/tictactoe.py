@@ -66,14 +66,14 @@ def isWinner(bo, le):
     player has won.
     bo = board and le = letter (abbreviations are used for brevity in the code)
     """
-    return ((bo[7] == le and bo[8] == le and bo[9] = le) or #across the top
-            (bo[4] == le and bo[5] == le and bo[6] = le) or #across the middle
-            (bo[1] == le and bo[2] == le and bo[3] = le) or #across the bottom
-            (bo[7] == le and bo[4] == le and bo[1] = le) or #down the left side
-            (bo[8] == le and bo[5] == le and bo[2] = le) or #down the middle
-            (bo[9] == le and bo[6] == le and bo[3] = le) or #down the right side
-            (bo[7] == le and bo[5] == le and bo[3] = le) or #diagonal
-            (bo[9] == le and bo[5] == le and bo[1] = le))   #diagonal
+    return ((bo[7] == le and bo[8] == le and bo[9] == le) or # across the top
+            (bo[4] == le and bo[5] == le and bo[6] == le) or # across the middle
+            (bo[1] == le and bo[2] == le and bo[3] == le) or # across the bottom
+            (bo[7] == le and bo[4] == le and bo[1] == le) or # down the left
+            (bo[8] == le and bo[5] == le and bo[2] == le) or # down the middle
+            (bo[9] == le and bo[6] == le and bo[3] == le) or # down the right
+            (bo[7] == le and bo[5] == le and bo[3] == le) or # diagonal
+            (bo[9] == le and bo[5] == le and bo[1] == le))   # diagonal
 
 def getBoardCopy(board):
     """
@@ -191,7 +191,7 @@ while True:
                 drawBoard(theBoard)
                 print('Hooray!!! You have won the game!')
                 gameIsPlaying = False
-            else
+            else:
                 if isBoardFull(theBoard):
                     drawBoard(theBoard)
                     print('The game is a tie!')
