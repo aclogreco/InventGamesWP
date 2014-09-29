@@ -48,3 +48,45 @@ def isOnlyDigits(num):
             return False
 
     return True
+
+def playAgain():
+    """
+    This function returns True if the player wants to play again,
+    otherwise it returns False.
+    """
+    print('Do you want to play again? (yes or no)')
+    return input().lower().startswith('y')
+
+NUMDIGITS = 3
+MAXGUESS = 10
+
+print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUMDIGITS))
+print('Here are some clues:')
+print('When I say:\t\tThat means:')
+print('  Pico\t\tOne digit is correct but in the wrong position.')
+print('  Fermi\t\tOne digit is correct and in the right position.')
+print('  Bagels\t\tNo digit is correct.')
+
+## Main game loop ##
+while True:
+    secretNum = getSecretNum(NUMDIGITS)
+    print('I have thought up a number. You have %s guesses to get it.' % (MAXGUESS))
+
+    numGuesses = 1
+    while numGuesses <= MAXGUESS:
+        guess = ''
+        while len(guess) != NUMDIGITS or not isOnlyDigits(guess):
+            print('Guess #%s: ' % (numGuesses))
+            guess = input()
+
+        clue = getClues(guess, secretNum)
+        print(clue)
+        numGuesses += 1
+
+        if guess == secretNum:
+            break
+        if numGuesses > MAXGUESS:
+            print('You ran out of guesses. The answer was %s.' % (secretNum))
+
+    if not playAgain():
+        break
