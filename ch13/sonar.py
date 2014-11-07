@@ -61,4 +61,14 @@ def getNewBoard():
 
     return board
 
+def getRandomChests(numChests):
+    """
+    Create a list of chest data structures
+    (two-item  lists of x, y int coordinates).
+    """
+    chests = []
+    for i in range(numChests):
+        chests.append([random.randint(0, 59), random.randint(0, 14)])
+    return chests
+
 
