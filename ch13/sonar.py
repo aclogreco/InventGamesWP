@@ -71,4 +71,10 @@ def getRandomChests(numChests):
         chests.append([random.randint(0, 59), random.randint(0, 14)])
     return chests
 
+def isValidMove(x, y):
+    """
+    Return True if the coordinates are on the board, otherwise False.
+    """
+    return x >= 0 and x <= 59 and y >= 0 and y <= 14
+
 
