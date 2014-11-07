@@ -34,4 +34,13 @@ def drawBoard(board):
     print('   ' + ('0123456789' * 6))
     print(hline)
 
+def getRow(board, row):
+    """
+    Return a string from the board data structure at a certain row.
+    """
+    boardRow = ''
+    for i in range(60):
+        boardRow += board[i][row]
+    return boardRow
+
 
