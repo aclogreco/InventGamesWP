@@ -15,7 +15,7 @@ def drawBoard(board):
     Draw the board data structure.
     """
 
-    hline = '     '  # initial space for the numbers
+    hline = '    '  # initial space for the numbers
                      # down the left side of the board
     for i in range(1, 6):
         hline += (' ' * 9) + str(i)
