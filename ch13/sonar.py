@@ -77,4 +77,39 @@ def isValidMove(x, y):
     """
     return x >= 0 and x <= 59 and y >= 0 and y <= 14
 
+def makeMove(board, chests, x, y):
+    """
+    Change the board data structure with a sonar device character. Remove 
+    treasure chests from the chests list as they are found. Return False if 
+    this an invalid move. Otherwise, return the string of the result of this 
+    move.
+    """
+    if not isValidMove(x, y):
+        return False
+    
+    smallestDistance = 100  # any chest will be closer than 100.
+    for cx, cy in chests:
+        if abs(cx - x) > abs(cy - y):
+            distance = abs(cx - x)
+        else:
+            distance = abs(cy - y)
+        
+        if distance < smallestDistance:  # we want the closest treasure chest.
+            smallestDistance = distance
+    
+    if smallestDistance == 0:
+        # xy is directly on a treasure chest!
+        chests.remove([x, y])
+        return 'You have found a sunken treasure chest!'
+    else:
+        if smallestDistance < 10:
+            board[x][y] = str(smallestDistance)
+            result = 'Treasure detected at a distance of '
+            result += '%s from the sonar device.' % (smallestDistance)
+            return result
+        else:
+            board[x][y] = 'O'
+            result = 'Sonar did not detect anything. '
+            result += 'All treasure chests out of range.'
+            return result
 
