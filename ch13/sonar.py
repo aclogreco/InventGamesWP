@@ -145,3 +145,12 @@ def enterPlayerMove():
             'then a number from 0 to 14.')
 
 
+def playAgain():
+    """
+    This function returns True if the player wants to play again, 
+    otherwise it returns False.
+    """
+    print('Do you want to play again? (yes or no)')
+    return input().lower().startswith('y')
+
+
