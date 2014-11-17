@@ -1,10 +1,14 @@
 # sonar.py
-#
-# Sonar - an open seas treasure hunt game
-# A.C. LoGreco
+"""
+Sonar - an open seas treasure hunt game
+An example from Chapter 13 of 
+'Invent Your Own Games With Python' by Al Sweigart
+A.C. LoGreco
+"""
 
 import random
 import sys
+
 
 def drawBoard(board):
     """
@@ -35,6 +39,7 @@ def drawBoard(board):
     print('   ' + ('0123456789' * 6))
     print(hline)
 
+
 def getRow(board, row):
     """
     Return a string from the board data structure at a certain row.
@@ -43,6 +48,7 @@ def getRow(board, row):
     for i in range(60):
         boardRow += board[i][row]
     return boardRow
+
 
 def getNewBoard():
     """
@@ -61,6 +67,7 @@ def getNewBoard():
 
     return board
 
+
 def getRandomChests(numChests):
     """
     Create a list of chest data structures
@@ -71,11 +78,13 @@ def getRandomChests(numChests):
         chests.append([random.randint(0, 59), random.randint(0, 14)])
     return chests
 
+
 def isValidMove(x, y):
     """
     Return True if the coordinates are on the board, otherwise False.
     """
     return x >= 0 and x <= 59 and y >= 0 and y <= 14
+
 
 def makeMove(board, chests, x, y):
     """
