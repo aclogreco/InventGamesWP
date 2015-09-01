@@ -5,10 +5,10 @@ This repository contains examples from the book
 online at **[inventwithpython.com](http://inventwithpython.com)**.
 
 All source code is open source and released under the 
-[Creative Commons Attribution-Noncommecial-Share Alike license](http://creativecommons.org/licenses/by-nc-sa/3.0/us/).
+[BSD 2-Clause license](http://opensource.org/licenses/BSD-2-Clause).
 
-Examples created by Al Sweigart.
+All examples originally created by Al Sweigart.
 
 All modifications made by A.C. LoGreco.
 
-(Uses Python 3.2)
+(Examples are inteneded to be run with Python 3)
