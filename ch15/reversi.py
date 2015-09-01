@@ -30,4 +30,19 @@ def drawBoard(board):
         print(HLINE)
 
 
+def resetBoard(board):
+    """
+    Blanks out the board it is passed, except for the original starting position.
+    """
+    for x in range(8):
+        for y in range(8):
+            board[x][y] = ' '
+
+    # Starting pieces:
+    board[3][3] = 'X'
+    board[3][4] = 'O'
+    board[4][3] = 'O'
+    board[4][4] = 'X'
+
+
 
