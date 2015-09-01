@@ -1,0 +1,3 @@
+# reversi.py
+# Reversi (Othello)
+
