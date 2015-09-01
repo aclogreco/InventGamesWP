@@ -21,7 +21,10 @@ def getKey():
     key = 0
     while True:
         print('Enter the key number (1-%s)' % (MAX_KEY_SIZE))
-        key = int(input())
+        try:
+            key = int(input())
+        except ValueError:
+            continue
         if (key >= 1 and key <= MAX_KEY_SIZE):
             return key
 
