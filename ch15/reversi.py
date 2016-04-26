@@ -113,4 +113,11 @@ def isValidMove(board, tile, xstart, ystart):
     return tilesToFlip
 
 
+def isOnBoard(x, y):
+    """
+    Returns True if the coordinates are loacated on the board.
+    """
+    return x >= 0 and x <= 7 and y >= 0 and y <= 7
+
+
 
