@@ -133,4 +133,19 @@ def getBoardWithValidMoves(board, tile):
     return duprBoard
 
 
+def getValidMoves(board, tile):
+    """
+    Returns a list of [x,y] lists of valid moves for the given player on the
+    given board.
+    """
+    validMoves = []
+
+    for x in range(8):
+        for y in range(8):
+            if isValidMove(board, tile, x, y) != False:
+                validMoves.append([x, y])
+
+    return validMoves
+
+
 
