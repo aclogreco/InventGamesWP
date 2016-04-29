@@ -148,4 +148,22 @@ def getValidMoves(board, tile):
     return validMoves
 
 
+def getScoreOfBoard(board):
+    """
+    Determine the score by counting the tiles. Returns a dictionary with
+    keys 'X' and 'O'.
+    """
+    xscore = 0
+    oscore = 0
+
+    for x in range(8):
+        for y in range (8):
+            if board[x][y] == 'X':
+                xscore += 1
+            if board[x][y] == 'O':
+                oscore += 1
+
+    return {'X':xscore, 'O':oscore}
+
+
 
