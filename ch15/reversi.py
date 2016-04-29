@@ -205,4 +205,22 @@ def playAgain():
     return input().lower().startswith('y')
 
 
+def makeMove(board, tile, xstart, ystart):
+    """
+    Place the tile on the board at xstart, ystart, and flip any of the
+    opponent's pieces.
+    Returns False if this is an invalid move, True if it is valid.
+    """
+    tilesToFlip = isValidMove(board, tile, xstart, ystart)
+
+    if tilesToFlip == False:
+        return False
+
+    board[xstart][ystart] = tile
+    for x, y in tilesToFlip:
+        board[x][y] = tile
+
+    return True
+
+
 
