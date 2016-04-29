@@ -166,4 +166,24 @@ def getScoreOfBoard(board):
     return {'X':xscore, 'O':oscore}
 
 
+def enterPlayerTile():
+    """
+    Lets the player type which tile they want to be.
+    Returns a list with the player's tile as the first item, and the
+    computer's tile as the second.
+    """
+    tile = ''
+
+    while not (tile == 'X' or tile == 'O'):
+        print('Do you want to be X or O?')
+        tile = input().upper()
+
+    # the first element in the list is the player's tile, the second is the
+    # computer's tile.
+    if tile == 'X':
+        return ['X', 'O']
+    else:
+        return ['O', 'X']
+
+
 
