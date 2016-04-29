@@ -120,4 +120,17 @@ def isOnBoard(x, y):
     return x >= 0 and x <= 7 and y >= 0 and y <= 7
 
 
+def getBoardWithValidMoves(board, tile):
+    """
+    Returns a new board with '.' marking the valid moves the given player
+    can make.
+    """
+    dupeBoard = getBoardCopy(board)
+
+    for x, y in getValidMoves(dupeBoard, tile):
+        dupeBoard[x][y] = '.'
+
+    return duprBoard
+
+
 
