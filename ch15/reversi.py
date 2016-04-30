@@ -223,4 +223,17 @@ def makeMove(board, tile, xstart, ystart):
     return True
 
 
+def getBoardCopy(board):
+    """
+    Make a duplicate of the board list and return the duplicate.
+    """
+    dupeBoard = getNewBoard()
+
+    for x in range(8):
+        for y in range(8):
+            dupeBoard[x][y] = board[x][y]
+
+    return dupeboard
+
+
 
