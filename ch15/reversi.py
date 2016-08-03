@@ -304,3 +304,13 @@ def getComputerMove(board, computerTile):
     return bestMove
 
 
+def showPoints(playerTile, computerTile):
+    """
+    Prints out the current score.
+    """
+    scores = getScoreofBoard(mainBoard)
+    print('You have %s points. The computer has %s points.' %
+          (scores[playerTile], scores[computerTile]))
+
+
+
