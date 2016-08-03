@@ -276,5 +276,31 @@ def getPlayerMove(board, playerTile):
     return [x, y]
 
 
+def getComputerMove(board, computerTile):
+    """
+    Given a board and the computer's tile, determine where to
+    move and return that move as a [x, y] list.
+    """
+    possibleMoves = getValidMoves(board, computerTile)
+
+    # randomize the order of possible moves
+    random.shuffle(possibleMoves)
+
+    # always go for a corner if available.
+    for x, y in possibleMoves:
+        if isOnCorner(x, y):
+            return [x, y]
+
+    # Go through all the possible moves and remember the best scoring move.
+    bestScore = -1
+    for x, y in possibleMoves:
+        dupeBoard = getBoardCopy(board)
+        makeMove(dupeBoard, computerTile, x, y)
+        score = getScoreOfBoard(dupeBoard)[computerTile]
+        if score > bestScore:
+            bestMove = [x, y]
+            bestScore = score
+
+    return bestMove
 
 
