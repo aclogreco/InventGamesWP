@@ -371,3 +371,11 @@ while True:
     if scores[playerTile] > scores[computerTile]:
         print('You beat the computer by %s points! Congratulations!!!' %
               (scores[playerTile] - scores[computerTile]))
+    elif scores[playerTile] < scores[computerTile]:
+        print('You lost. The computer beat you by %s points.' %
+              (scores[computerTile] - scores[playerTile]))
+    else:
+        print('The game was a tie!')
+
+    if not playAgain():
+        break
