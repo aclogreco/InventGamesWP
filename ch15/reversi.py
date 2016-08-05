@@ -130,7 +130,7 @@ def getBoardWithValidMoves(board, tile):
     for x, y in getValidMoves(dupeBoard, tile):
         dupeBoard[x][y] = '.'
 
-    return duprBoard
+    return dupeBoard
 
 
 def getValidMoves(board, tile):
@@ -233,7 +233,7 @@ def getBoardCopy(board):
         for y in range(8):
             dupeBoard[x][y] = board[x][y]
 
-    return dupeboard
+    return dupeBoard
 
 
 def isOnCorner(x, y):
@@ -308,7 +308,7 @@ def showPoints(playerTile, computerTile):
     """
     Prints out the current score.
     """
-    scores = getScoreofBoard(mainBoard)
+    scores = getScoreOfBoard(mainBoard)
     print('You have %s points. The computer has %s points.' %
           (scores[playerTile], scores[computerTile]))
 
@@ -358,7 +358,7 @@ while True:
             x, y = getComputerMove(mainBoard, computerTile)
             makeMove(mainBoard, computerTile, x, y)
 
-            if getValidMoves(mainBoard, playerTile) = []:
+            if getValidMoves(mainBoard, playerTile) == []:
                 break
             else:
                 turn = 'player'
