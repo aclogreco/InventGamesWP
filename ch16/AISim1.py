@@ -1,8 +1,8 @@
-# reversi.py
+# AISim1.py
 # Reversi (Othello)
 """
-Reversi - a tile flipping game
-An example from Chapter 15 of 
+Reversi Simulation 1 - a computer vs. computer tile flipping game
+An example from Chapter 16 of 
 'Invent Your Own Games With Python' by Al Sweigart
 A.C. LoGreco
 """
