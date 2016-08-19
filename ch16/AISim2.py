@@ -317,7 +317,13 @@ def showPoints(playerTile, computerTile):
 # Main Game Loop
 print('Welcome to Reversi!')
 
-while True:
+xwins = 0
+owins = 0
+ties = 0
+numGames = int(input('Enter number of games to run: '))
+
+for game in range(numGames):
+    print('Game #%s:' % (game), end=' ')
     # Reset the board and game.
     mainBoard = getNewBoard()
     resetBoard(mainBoard)
@@ -325,14 +331,8 @@ while True:
         turn = 'X'
     else:
         turn = 'O'
-    print('The ' + turn + ' will go first.')
 
     while True:
-        drawBoard(mainBoard)
-        scores = getScoreOfBoard(mainBoard)
-        print('X has %s points. O has %s points' % (scores['X'], scores['O']))
-        input('Press Enter to continue.')
-
         if turn == 'X':
             # X's turn.
             otherTile = 'O'
@@ -350,10 +350,20 @@ while True:
             turn = otherTile
             
     # Display the final score.
-    drawBoard(mainBoard)
     scores = getScoreOfBoard(mainBoard)
     print('X scored %s points. O scored %s points.' %
           (scores['X'], scores['O']))
 
-    if not playAgain():
-        sys.exit()
+    if scores['X'] > scores['O']:
+        xwins += 1
+    elif scores['X'] < scores['O']:
+        owins += 1
+    else:
+        ties += 1
+
+numGames = float(numGames)
+xpercent = round(((xwins / numGames) * 100), 2)
+opercent = round(((owins / numGames) * 100), 2)
+tiepercent = round(((ties / numGames) * 100), 2)
+print('X wins %s games (%s%%), O wins %s games (%s%%), ties for %s games (%s%%) of %s games total.' %
+      (xwins, xpercent, owins, opercent, ties, tiepercent, numGames))
