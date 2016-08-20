@@ -389,6 +389,22 @@ def getWorstMove(board, tile):
     return worstMove
 
 
+def getCornerWorstMove(board, tile):
+    """
+    Return a corner or the move that flips the least number of tiles.
+    """
+    possibleMoves = getValidMoves(board, tile)
+
+    # randomize the order of the possible moves.
+    random.shuffle(possibleMoves)
+
+    # always go for a corner if available.
+    for x, y in possibleMoves:
+        if isOnCorner(x, y):
+            return [x, y]
+
+    return getWorstMove(board, tile)
+
 
 
 # Main Game Loop
