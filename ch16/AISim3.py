@@ -314,6 +314,14 @@ def showPoints(playerTile, computerTile):
           (scores[playerTile], scores[computerTile]))
 
 
+def getRandomMove(board, tile):
+    """
+    Return a random move.
+    """
+    return random.choice( getValidMoves(board, tile) )
+
+
+
 
 # Main Game Loop
 print('Welcome to Reversi!')
