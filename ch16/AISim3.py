@@ -328,6 +328,28 @@ def isOnSide(x, y):
     return x == 0 or x == 7 or y == 0 or y == 7
 
 
+def getCornerSideBestMove(board, tile):
+    """
+    Return a corner move, or a side move, or the best move.
+    """
+    possibleMoves = getValidMoves(board, tile)
+
+    # randomize the order of the possible moves.
+    random.shuffle(possibleMoves)
+
+    # always go for a corner if available.
+    for x, y in possibleMoves:
+        if isOnCorner(x, y):
+            return [x, y]
+
+    # if there is no corner, return a side move.
+    for x, y in possibleMoves:
+        if isOnSide(x, y):
+            return [x, y]
+
+    return getComputerMove(board, tile)
+
+
 
 
 # Main Game Loop
