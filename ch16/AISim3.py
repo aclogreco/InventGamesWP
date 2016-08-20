@@ -367,6 +367,28 @@ def getSideBestMove(board, tile):
     return getComputerMove(board, tile)
 
 
+def getWorstMove(board, tile):
+    """
+    Return the move that flips the least number of tiles.
+    """
+    possibleMoves = getValidMoves(board, tile)
+
+    # randomize.the order of the possible moves
+    random.shuffle(possibleMoves)
+
+    # Go through all the possible moves and remember the worst scoring move.
+    worstScore = 64
+    for x, y in possibleMoves:
+        dupeBoard = getBoardCopy(board)
+        makeMove(dupeBoard, tile, x, y)
+        score = getScoreOfBoard(dupeBoard)[tile]
+        if score < worstScore:
+            worstMove = [x, y]
+            worstScore = score
+
+    return worstMove
+
+
 
 
 # Main Game Loop
