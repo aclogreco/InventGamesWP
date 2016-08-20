@@ -321,6 +321,13 @@ def getRandomMove(board, tile):
     return random.choice( getValidMoves(board, tile) )
 
 
+def isOnSide(x, y):
+    """
+    Returns TRUE if the board location is on the side of the board.
+    """
+    return x == 0 or x == 7 or y == 0 or y == 7
+
+
 
 
 # Main Game Loop
