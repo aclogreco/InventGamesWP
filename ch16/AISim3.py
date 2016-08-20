@@ -350,6 +350,23 @@ def getCornerSideBestMove(board, tile):
     return getComputerMove(board, tile)
 
 
+def getSideBestMove(board, tile):
+    """
+    Return a side move or the best move.
+    """
+    possibleMoves = getValidMoves(board, tile)
+
+    # randomize the order of the possible moves.
+    random.shuffle(possibleMoves)
+
+    # return a side move, if available
+    for x, y in possibleMoves:
+        if isOnSide(x, y):
+            return [x, y]
+
+    return getComputerMove(board, tile)
+
+
 
 
 # Main Game Loop
