@@ -430,11 +430,21 @@ for game in range(numGames):
             # X's turn.
             otherTile = 'O'
             x, y = getComputerMove(mainBoard, 'X')
+            #x, y = getRandomMove(mainBoard, 'X')
+            #x, y = getCornerSideBestMove(mainBoard, 'X')
+            #x, y = getSideBestMove(mainBoard, 'X')
+            #x, y = getWorstMove(mainBoard, 'X')
+            #x, y = getCornerWorstMove(mainBoard, 'X')
             makeMove(mainBoard, 'X', x, y)
         else:
             # O's turn.
             otherTile = 'X'
             x, y = getComputerMove(mainBoard, 'O')
+            #x, y = getRandomMove(mainBoard, 'O')
+            #x, y = getCornerSideBestMove(mainBoard, 'O')
+            #x, y = getSideBestMove(mainBoard, 'O')
+            #x, y = getWorstMove(mainBoard, 'O')
+            #x, y = getCornerWorstMove(mainBoard, 'O')
             makeMove(mainBoard, 'O', x, y)
 
         if getValidMoves(mainBoard, otherTile) == []:
