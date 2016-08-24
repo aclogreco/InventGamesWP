@@ -35,7 +35,7 @@ textRect.centerx = windowSurface.get_rect().centerx
 textRect.centery = windowSurface.get_rect().centery
 
 # draw the white background onto the surface
-windowSuface.fill(WHITE)
+windowSurface.fill(WHITE)
 
 # draw a green polygon onto the surface
 pygame.draw.polygon(windowSurface, GREEN,
