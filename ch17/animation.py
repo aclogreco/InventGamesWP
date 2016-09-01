@@ -40,3 +40,64 @@ b2 = {'rect':pygame.Rect(200, 200, 20, 20), 'color':GREEN, 'dir':UPLEFT}
 b3 = {'rect':pygame.Rect(100, 150, 60, 60), 'color':BLUE, 'dir':DOWNLEFT}
 blocks = [b1, b2, b3]
 
+
+# main game loop
+while True:
+    # check for the QUIT event
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+    # draw the black background onto the surface
+    windowSurface.fill(BLACK)
+
+    for b in blocks:
+        # move the blocks data structure
+        if b['dir'] == DOWNLEFT:
+            b['rect'].left -= MOVESPEED
+            b['rect'].top += MOVESPEED
+        if b['dir'] == DOWNRIGHT:
+            b['rect'].left += MOVESPEED
+            b['rect'].top += MOVESPEED
+        if b['dir'] == UPLEFT:
+            b['rect'].left -= MOVESPEED
+            b['rect'].top -= MOVESPEED
+        if b['dir'] == UPRIGHT:
+            b['rect'].left += MOVESPEED
+            b['rect'].top -= MOVESPEED
+
+        # check if the block has moved out of the window
+        if b['rect'].top < 0:
+            # block has moved past the top
+            if b['dir'] == UPLEFT:
+                b['dir'] == DOWNLEFT
+            if b['dir'] == UPRIGHT:
+                b['dir'] == DOWNRIGHT
+        if b['rect'].bottom > WINDOWHEIGHT:
+            # block has moved past the bottom
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = UPLEFT
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = UPRIGHT
+        if b['rect'].left < 0:
+            # blcok has moved past the left side
+            if b['dir'] == DOWNLEFT:
+                b['dir'] = DOWNRIGHT
+            if b['dir'] == UPLEFT:
+                b['dir'] = UPRIGHT
+        if b['rect'].right > WINDOWWIDTH:
+            # block has moved past the right side
+            if b['dir'] == DOWNRIGHT:
+                b['dir'] = DOWNLEFT
+            if b['dir'] == UPRIGHT:
+                b['dir'] = UPLEFT
+
+        # draw the block onto the surface
+        pygame.draw.rect(windowSurface, b['color'], b['rect'])
+
+
+    # draw the window onto the screen
+    pygame.display.update()
+    time.sleep(0.02)
+    
