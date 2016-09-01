@@ -8,7 +8,7 @@ An example from Chapter 17 of
 A.C. LoGreco
 """
 
-imprt pygame, sys, time
+import pygame, sys, time
 from pygame.locals import *
 
 # set up pygame
@@ -71,9 +71,9 @@ while True:
         if b['rect'].top < 0:
             # block has moved past the top
             if b['dir'] == UPLEFT:
-                b['dir'] == DOWNLEFT
+                b['dir'] = DOWNLEFT
             if b['dir'] == UPRIGHT:
-                b['dir'] == DOWNRIGHT
+                b['dir'] = DOWNRIGHT
         if b['rect'].bottom > WINDOWHEIGHT:
             # block has moved past the bottom
             if b['dir'] == DOWNLEFT:
