@@ -77,3 +77,77 @@ for i in range(20):
                              FOODSIZE, FOODSIZE))
 
 
+# the main game loop
+while True:
+    # check for the QUIT event
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+
+    foodCounter += 1
+    if foodCounter >= NEWFOOD:
+        # add new food
+        foodCounter = 0
+        foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH - FOODSIZE),
+                                 random.randint(0, WINDOWHEIGHT - FOODSIZE),
+                                 FOODSIZE, FOODSIZE))
+
+    # draw the black background onto the surface
+    windowSurface.fill(BLACK)
+
+    # move the bouncer data structure
+    if bouncer['dir'] == DOWNLEFT:
+        bouncer['rect'].left -= MOVESPEED
+        bouncer['rect'].top += MOVESPEED
+    if bouncer['dir'] == DOWNRIGHT:
+        bouncer['rect'].left += MOVESPEED
+        bouncer['rect'].top += MOVESPEED
+    if bouncer['dir'] == UPLEFT:
+        bouncer['rect'].left -= MOVESPEED
+        bouncer['rect'].top -= MOVESPEED
+    if bouncer['dir'] == UPRIGHT:
+        bouncer['rect'].left += MOVESPEED
+        bouncer['rect'].top -= MOVESPEED
+
+    # check if the bouncer has moved out of the window
+    if bouncer['rect'].top < 0:
+        # bouncer has moved past the top
+        if bouncer['dir'] == UPLEFT:
+            bouncer['dir'] = DOWNLEFT
+        if bouncer['dir'] == UPRIGHT:
+            bouncer['dir'] = DOWNRIGHT
+    if bouncer['rect'].bottom > WINDOWHEIGHT:
+        # bouncer has moved past the bottom
+        if bouncer['dir'] == DOWNLEFT:
+            bouncer['dir'] = UPLEFT
+        if bouncer['dir'] == DOWNRIGHT:
+            bouncer['dir'] = UPRIGHT
+    if bouncer['rect'].left < 0:
+        # bouncer has moved past the left side
+        if bouncer['dir'] == DOWNLEFT:
+            bouncer['dir'] = DOWNRIGHT
+        if bouncer['dir'] == UPLEFT:
+            bouncer['dir'] = UPRIGHT
+    if bouncer['rect'].right > WINDOWWIDTH:
+        # bouncer has moved past the right side
+        if bouncer['dir'] == DOWNRIGHT:
+            bouncer['dir'] = DOWNLEFT
+        if bouncer['dir'] == UPRIGHT:
+            bouncer['dir'] = UPLEFT
+
+    # draw the bouncer onto the surface
+    pygame.draw.rect(windowSurface, WHITE, bouncer['rect'])
+
+    # check if the bouncer has intersected with any food squares.
+    for food in foods[:]:
+        if doRectsOverlap(bouncer['rect'], food):
+            foods.remove(food)
+
+    # draw the food
+    for i in range(len(foods)):
+        pygame.draw.rect(windowSurface, GREEN, foods[i])
+
+    # draw the window onto the screen
+    pygame.display.update()
+    mainClock.tick(40)
