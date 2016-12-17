@@ -49,7 +49,7 @@ for i in range(20):
 foodCounter = 0
 NEWFOOD = 40
 
-# set up keyboard variables
+# set up keyboard flags
 moveLeft = False
 moveRight = False
 moveUp = False
@@ -72,7 +72,7 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == KEYDOWN:
-            # change the keyboard variables
+            # change the keyboard flags
             if event.key == K_LEFT or event.key == ord('a'):
                 moveRight = False
                 moveLeft = True
@@ -85,4 +85,26 @@ while True:
             if event.key == K_DOWN or event.key == ord('s'):
                 moveUp = False
                 moveDown = True
+        if event.type == KEYUP:
+            if event.key == K_ESCAPE:
+                pygame.quit()
+                sys.exit()
+            if event.key == K_LEFT or event.key == ord('a'):
+                moveLeft = False
+            if event.key == K_RIGHT or event.key == ord('d'):
+                moveRight = False
+            if event.key == K_UP or event.key == ord('w'):
+                moveUp = False
+            if event.key == K_DOWN or event.key == ord('s'):
+                moveDown = False
+            if even.key == ord('x'):
+                player.top = random.randint(0, WINDOWHEIGHT - player.height)
+                player.left = random.randint(0, WINDOWWIDTH - player.width)
+            if event.key == ord('m'):
+                if musicPlaying:
+                    pygame.mixer.music.stop()
+                else:
+                    pygame.mixer.music.play(-1, 0.0)
+                musicPlaying = not musicPlaying
+
         
