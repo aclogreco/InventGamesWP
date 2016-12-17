@@ -123,4 +123,14 @@ while True:
     # draw the black background onto the surface
     windowSurface.fill(BLACK)
 
+    # move the player
+    if moveDown and player.bottom < WINDOWHEIGHT:
+        player.top += MOVESPEED
+    if moveUp and player.top > 0:
+        player.top -= MOVESPEED
+    if moveLeft and player.left > 0:
+        player.left -= MOVESPEED
+    if moveRight and player.right < WINDOWWIDTH:
+        player.right += MOVESPEED
+
     
