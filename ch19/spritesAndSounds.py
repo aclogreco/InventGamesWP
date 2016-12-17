@@ -85,6 +85,7 @@ while True:
             if event.key == K_DOWN or event.key == ord('s'):
                 moveUp = False
                 moveDown = True
+        
         if event.type == KEYUP:
             if event.key == K_ESCAPE:
                 pygame.quit()
@@ -107,4 +108,8 @@ while True:
                     pygame.mixer.music.play(-1, 0.0)
                 musicPlaying = not musicPlaying
 
-        
+        if event.type == MOUSEBUTTONUP:
+            foods.append(pygame.Rect(event.pos[0] - 10, event.pos[1] - 10,
+                                     20, 20))
+
+    
