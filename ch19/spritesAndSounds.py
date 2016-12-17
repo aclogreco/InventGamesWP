@@ -120,4 +120,7 @@ while True:
                                  random.randint(0, WINDOWHEIGHT - 20),
                                  20, 20))
 
+    # draw the black background onto the surface
+    windowSurface.fill(BLACK)
+
     
