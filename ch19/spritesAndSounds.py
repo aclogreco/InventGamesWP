@@ -133,4 +133,7 @@ while True:
     if moveRight and player.right < WINDOWWIDTH:
         player.right += MOVESPEED
 
+    # draw the player's sprite onto the surface
+    windowSurface.blit(playerStretchedImage, player)
+
     
