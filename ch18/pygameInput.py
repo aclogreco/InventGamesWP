@@ -63,29 +63,29 @@ while True:
         if event.type == KEYDOWN:
             # change the keyboard variables
             if event.key == K_LEFT or event.key == ord('a'):
-                moveRight == False
-                moveLeft == True
+                moveRight = False
+                moveLeft = True
             if event.key == K_RIGHT or event.key == ord('d'):
-                moveRight == True
-                moveLeft == False
+                moveLeft = False
+                moveRight = True
             if event.key == K_UP or event.key == ord('w'):
-                moveDown == False
-                moveUp == True
+                moveDown = False
+                moveUp = True
             if event.key == K_DOWN or event.key == ord('s'):
-                moveDown == True
-                moveUp == False
+                moveUp = False
+                moveDown = True
         if event.type == KEYUP:
-            if event.key = K_ESCAPE:
+            if event.key == K_ESCAPE:
                 pygame.quit()
                 sys.exit()
             if event.key == K_LEFT or event.key == ord('a'):
-                moveLeft == False
+                moveLeft = False
             if event.key == K_RIGHT or event.key == ord('d'):
-                moveRight == False
+                moveRight = False
             if event.key == K_UP or event.key == ord('w'):
-                moveUp == False
+                moveUp = False
             if event.key == K_DOWN or event.key == ord('s'):
-                moveDown == False
+                moveDown = False
             if event.key == ord('x'):
                 player.top = random.randint(0, WINDOWHEIGHT - player.height)
                 player.left = random.randint(0, WINDOWWIDTH - player.width)
