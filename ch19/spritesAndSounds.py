@@ -112,4 +112,12 @@ while True:
             foods.append(pygame.Rect(event.pos[0] - 10, event.pos[1] - 10,
                                      20, 20))
 
+    foodCounter += 1
+    if foodCounter >= NEWFOOD:
+        # add new food
+        foodCounter = 0  # reset food counter
+        foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH - 20),
+                                 random.randint(0, WINDOWHEIGHT - 20),
+                                 20, 20))
+
     
