@@ -63,3 +63,12 @@ pygame.mixer.music.load('.\sounds\background.mid')
 pygame.mixer.music.play(-1, 0.0)
 musicPlaying = True
 
+# The main game loop
+while True:
+    # event loop
+    for event in pygame.event.get():
+        # check for the QUIT event
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+        
