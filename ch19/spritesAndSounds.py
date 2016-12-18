@@ -149,4 +149,8 @@ while True:
             if musicPlaying:
                 pickUpSound.play()
 
+    # draw the food
+    for food in foods:
+        windowSurface.blit(foodImage, food)
+
     
