@@ -18,8 +18,8 @@ An example from Chapter 19 of
 A.C. LoGreco
 """
 
-import pygame, sys, time, random
-from pygame,locals import *
+import pygame, sys, time, random, os
+from pygame.locals import *
 
 # set up pygame
 pygame.init()
@@ -37,10 +37,10 @@ BLACK = (0, 0, 0)
 # set up the block data structure
 # player
 player = pygame.Rect(300, 100, 40, 40)
-playerImage = pygame.image.load('.\sprites\player.png')
+playerImage = pygame.image.load(os.path.join('sprites', 'player.png'))
 playerStretchedImage = pygame.transform.scale(playerImage, (40, 40))
 # food
-foodImage = pygame.image.load('.\sprites\cherry.png')
+foodImage = pygame.image.load(os.path.join('sprites', 'cherry.png'))
 foods = []
 for i in range(20):
     foods.append(pygame.Rect(random.randint(0, WINDOWWIDTH - 20),
@@ -58,8 +58,9 @@ moveDown = False
 MOVESPEED = 6
 
 # set up music
-pickUpSound = pygame.mixer.Sound(file='.\sounds\pickup.wav')
-pygame.mixer.music.load('.\sounds\background.mid')
+pickUpSound = pygame.mixer.Sound(file='./sounds/pickup.wav')
+pygame.mixer.music.load('./sounds/background.mid')
+pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1, 0.0)
 musicPlaying = True
 
@@ -98,7 +99,7 @@ while True:
                 moveUp = False
             if event.key == K_DOWN or event.key == ord('s'):
                 moveDown = False
-            if even.key == ord('x'):
+            if event.key == ord('x'):
                 player.top = random.randint(0, WINDOWHEIGHT - player.height)
                 player.left = random.randint(0, WINDOWWIDTH - player.width)
             if event.key == ord('m'):
@@ -142,7 +143,7 @@ while True:
         if player.colliderect(food):
             foods.remove(food)
             player = pygame.Rect(player.left, player.top,
-                                 player.width + player.height + 2)
+                                 player.width + 2, player.height + 2)
             playerStretchedImage = pygame.transform.scale(playerImage,
                                                           (player.width,
                                                            player.height))
