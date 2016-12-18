@@ -136,4 +136,17 @@ while True:
     # draw the player's sprite onto the surface
     windowSurface.blit(playerStretchedImage, player)
 
+    # check if the player's bounding block has
+    # intersected with any food squares.
+    for food in foods[:]:
+        if player.colliderect(food):
+            foods.remove(food)
+            player = pygame.Rect(player.left, player.top,
+                                 player.width + player.height + 2)
+            playerStretchedImage = pygame.transform.scale(playerImage,
+                                                          (player.width,
+                                                           player.height))
+            if musicPlaying:
+                pickUpSound.play()
+
     
