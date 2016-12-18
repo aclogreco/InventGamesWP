@@ -153,4 +153,6 @@ while True:
     for food in foods:
         windowSurface.blit(foodImage, food)
 
-    
+    # draw the window onto the screen
+    pygame.display.update()
+    mainClock.tick(40)
