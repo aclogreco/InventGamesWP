@@ -87,3 +87,12 @@ pygame.mixer.music.set_volume(0.1)
 playerImage = player.image.load(os.path.join('sprites', 'player.png'))
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load(os.path.join('sprites', 'baddie.png'))
+
+# show the "Start" screen
+drawText('Dodger', font, windowSurface, (WINDOWWIDTH / 3), (WINDOWHEIGHT / 3))
+drawText('Press a key to start.', font, windowSurface,
+         (WINDOWWIDTH / 3) - 30, (WINDOWHEIGHT / 3) + 50)
+pygame.display.update()
+waitForPlayerToPressKey()
+
+
