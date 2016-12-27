@@ -74,3 +74,16 @@ windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 pygame.display.set_caption('Dodger')
 pygame.mouse.set_visible('False')
 
+# set up fonts
+font = pygame.font.SysFont(None, 48)
+
+# set up sounds
+gameOverSound = pygame.mixer.Sound(file='./sounds/gameover.wav')
+gameOverSound.set_volume(0.3)
+pygame.mixer.music.load('./sounds/background.mid')
+pygame.mixer.music.set_volume(0.1)
+
+# set up images
+playerImage = player.image.load(os.path.join('sprites', 'player.png'))
+playerRect = playerImage.get_rect()
+baddieImage = pygame.image.load(os.path.join('sprites', 'baddie.png'))
