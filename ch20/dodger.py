@@ -70,7 +70,7 @@ def drawText(text, font, surface, x, y):
 # set up pygame, the window, and the mouse cursor
 pygame.init()
 mainClock = pygame.time.Clock()
-windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT),FULLSCREEN)
 pygame.display.set_caption('Dodger')
 pygame.mouse.set_visible(False)
 
