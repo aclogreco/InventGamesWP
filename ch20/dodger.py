@@ -131,4 +131,24 @@ while True:
                 if event.key == K_DOWN or event.key == ord('s'):
                     moveUp = False
                     moveDown = True
-                
+
+            if event.type == KEYUP:
+                if event.key == ord('z'):
+                    reverseCheat = False
+                    score = 0
+                if event.key == ord('x'):
+                    slowCheat = False
+                    score = 0
+                if event.key == K_ESCAPE:
+                    terminate()
+
+                if event.key == K_LEFT or evemt.key == ord('a'):
+                    moveLeft = False
+                if event.key == K_RIGHT or event.key == ord('d'):
+                    moveRight = False
+                if event.key == K_UP or event.key == ord('w'):
+                    moveUp = False
+                if event.key == K_DOWN or event.key == ord('s'):
+                    moveDown = False
+
+            
