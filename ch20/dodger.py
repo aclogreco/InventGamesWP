@@ -96,3 +96,15 @@ pygame.display.update()
 waitForPlayerToPressKey()
 
 
+topScore = 0
+while True:
+    # set up the start of the game
+    baddies = []
+    score = 0
+    playerRect.topleft = (WINDOWWIDTH / 2, WINDOWHEIGHT - 50)
+    moveLeft = moveRight = moveUp = moveDown = False
+    reverseCheat = slowCheat = False
+    baddieAddCounter = 0
+    pygame.mixer.music.play(-1, 0.0)
+
+    
