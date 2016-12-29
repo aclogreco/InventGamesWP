@@ -151,4 +151,9 @@ while True:
                 if event.key == K_DOWN or event.key == ord('s'):
                     moveDown = False
 
-            
+            if event.type = MOUSEMOTION:
+                # If the mouse moves, move the player where the cursor is.
+                playerRect.move_ip(event.pos[0] - playerRect.centerx,
+                                   event.pos[1] - playerRect.centery)
+
+        
