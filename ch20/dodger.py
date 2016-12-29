@@ -188,4 +188,18 @@ while True:
         # Move the mouse cursor to match the player.
         pygame.mouse.set_pos(playerRect.centerx, playerRect.centery)
 
+        # Move the baddies down.
+        for b in baddies:
+            if not reverseCheat and not slowCheat:
+                b['rect'],move_ip(0, b['speed'])
+            elif reverseCheat:
+                b['rect'].move_ip(0, -5)
+            elif slowCheat:
+                b['rect'].move_ip(0, 1)
+
+        # Delete baddies that have fallen past the bottom of the screen.
+        for b in baddies[:]:
+            if b['rect'].top > WINDOWHEIGHT:
+                baddies.remove(b)
+
         
