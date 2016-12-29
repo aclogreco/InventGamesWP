@@ -107,4 +107,28 @@ while True:
     baddieAddCounter = 0
     pygame.mixer.music.play(-1, 0.0)
 
-    
+    while True:     # the game loop runs while the game part is playing
+        score += 1  # increase the score
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                terminate()
+
+            if event.type == KEYDOWN:
+                if event.key == ord('z'):
+                    reverseCheat = True
+                if event.key == ord('x'):
+                    slowCheat = True
+                if event.key == K_LEFT or event.key == ord('a'):
+                    moveRight = False
+                    moveLeft = True
+                if event.key == K_RIGHT or event.key == ord('d'):
+                    moveLeft = False
+                    moveRight = True
+                if event.key == K_UP or event.key == ord('w'):
+                    moveDown = False
+                    moveUp = True
+                if event.key == K_DOWN or event.key == ord('s'):
+                    moveUp = False
+                    moveDown = True
+                
