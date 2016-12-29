@@ -20,7 +20,7 @@ A.C. LoGreco
 """
 
 
-import pygame, random, sys
+import pygame, random, sys, os
 from pygame.locals import *
 
 
@@ -72,7 +72,7 @@ pygame.init()
 mainClock = pygame.time.Clock()
 windowSurface = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 pygame.display.set_caption('Dodger')
-pygame.mouse.set_visible('False')
+pygame.mouse.set_visible(False)
 
 # set up fonts
 font = pygame.font.SysFont(None, 48)
@@ -84,7 +84,7 @@ pygame.mixer.music.load('./sounds/background.mid')
 pygame.mixer.music.set_volume(0.1)
 
 # set up images
-playerImage = player.image.load(os.path.join('sprites', 'player.png'))
+playerImage = pygame.image.load(os.path.join('sprites', 'player.png'))
 playerRect = playerImage.get_rect()
 baddieImage = pygame.image.load(os.path.join('sprites', 'baddie.png'))
 
@@ -142,7 +142,7 @@ while True:
                 if event.key == K_ESCAPE:
                     terminate()
 
-                if event.key == K_LEFT or evemt.key == ord('a'):
+                if event.key == K_LEFT or event.key == ord('a'):
                     moveLeft = False
                 if event.key == K_RIGHT or event.key == ord('d'):
                     moveRight = False
@@ -151,7 +151,7 @@ while True:
                 if event.key == K_DOWN or event.key == ord('s'):
                     moveDown = False
 
-            if event.type = MOUSEMOTION:
+            if event.type == MOUSEMOTION:
                 # If the mouse moves, move the player where the cursor is.
                 playerRect.move_ip(event.pos[0] - playerRect.centerx,
                                    event.pos[1] - playerRect.centery)
@@ -183,7 +183,7 @@ while True:
         if moveUp and playerRect.top > 0:
             playerRect.move_ip(0, -1 * PLAYERMOVERATE)
         if moveDown and playerRect.bottom < WINDOWHEIGHT:
-            playerRect.mov_ip(0, PLAYERMOVERATE)
+            playerRect.move_ip(0, PLAYERMOVERATE)
 
         # Move the mouse cursor to match the player.
         pygame.mouse.set_pos(playerRect.centerx, playerRect.centery)
@@ -191,7 +191,7 @@ while True:
         # Move the baddies down.
         for b in baddies:
             if not reverseCheat and not slowCheat:
-                b['rect'],move_ip(0, b['speed'])
+                b['rect'].move_ip(0, b['speed'])
             elif reverseCheat:
                 b['rect'].move_ip(0, -5)
             elif slowCheat:
