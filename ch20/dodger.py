@@ -156,4 +156,23 @@ while True:
                 playerRect.move_ip(event.pos[0] - playerRect.centerx,
                                    event.pos[1] - playerRect.centery)
 
+        # Add new baddies at the top of the screen, if needed.
+        if not reverseCheat and not slowCheat:
+            baddieAddCounter += 1
+        if baddieAddCounter == ADDNEWBADDIERATE:
+            baddieAddCounter = 0
+            baddieSize = random.randint(BADDIEMINSIZE, BADDIEMAXSIZE)
+            newBaddie = {'rect':
+                         pygame.Rect(random.randint(0, WINDOWWIDTH-baddieSize),
+                                     0 - baddieSize,
+                                     baddieSize,
+                                     baddieSize),
+                         'speed': 
+                         random.randint(BADDIEMINSPEED, BADDIEMAXSPEED),
+                         'surface':
+                         pygame.transform.scale(baddieImage,
+                                                (baddieSize, baddieSize)),
+                         }
+            baddies.append(newBaddie)
+
         
