@@ -185,4 +185,7 @@ while True:
         if moveDown and playerRect.bottom < WINDOWHEIGHT:
             playerRect.mov_ip(0, PLAYERMOVERATE)
 
+        # Move the mouse cursor to match the player.
+        pygame.mouse.set_pos(playerRect.centerx, playerRect.centery)
+
         
